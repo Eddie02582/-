@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+
+
+<!-- https://live.bootstrap-table.com/example/options/custom-search.html -->
+
+<table id="table" 
+        data-toggle="table"
+		data-search="true"
+		data-custom-search="customSearch"
+		data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+		
+		
+       >
+    <thead>
+      <tr>
+        <th data-field="id" data-sortable="true">ID</th>
+        <th data-field="name" data-sortable="true">Item Name</th>
+        <th data-field="price" data-sortable="true">Item Price</th>
+      </tr>
+
+    </thead>
+
+</table>
+<script>
+  $(function() {
+    $('#table').bootstrapTable({
+      formatSearch: function () {
+        return 'Search Item Price'
+      }
+    })
+  })
+
+  function customSearch(data, text) {
+    return data.filter(function (row) {
+      return row.price.indexOf(text) > -1
+    })
+  }
+</script>

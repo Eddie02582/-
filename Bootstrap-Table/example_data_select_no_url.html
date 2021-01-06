@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+
+
+<!-- https://live.bootstrap-table.com/example/options/checkbox-header.html -->
+<button class="btn btn-success" onclick="getIdSelections()">編輯</button>
+<table id="sort-table" 
+        data-toggle="table"	
+		data-show-pagination-switch="true"
+		data-checkbox-header="false"
+		data-click-to-select="true"
+       >
+    <thead>
+      <tr>
+		<th data-field="state" data-checkbox="true"></th>
+        <th data-field="id" data-sortable="true">ID</th>
+        <th data-field="name" data-sortable="true">Item Name</th>
+        <th data-field="price" data-sortable="true">Item Price</th>
+      </tr>
+
+    </thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td>0</td>
+			<td>Item 0</td>
+			<td>$0</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td>Item 1</td>
+			<td>$1</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2</td>
+			<td>Item 2</td>
+			<td>$2</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>3</td>
+			<td>Item 3</td>
+			<td>$3</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>4</td>
+			<td>Item 4</td>
+			<td>$4</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>5</td>
+			<td>Item 5</td>
+			<td>$5</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>6</td>
+			<td>Item 6</td>
+			<td>$6</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>7</td>
+			<td>Item 7</td>
+			<td>$7</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>8</td>
+			<td>Item 8</td>
+			<td>$8</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>9</td>
+			<td>Item 9</td>
+			<td>$9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>10</td>
+			<td>Item 10</td>
+			<td>$10</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>11</td>
+			<td>Item 11</td>
+			<td>$11</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>12</td>
+			<td>Item 12</td>
+			<td>$12</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>13</td>
+			<td>Item 13</td>
+			<td>$13</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>14</td>
+			<td>Item 14</td>
+			<td>$14</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>15</td>
+			<td>Item 15</td>
+			<td>$15</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>16</td>
+			<td>Item 16</td>
+			<td>$16</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>17</td>
+			<td>Item 17</td>
+			<td>$17</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>18</td>
+			<td>Item 18</td>
+			<td>$18</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>19</td>
+			<td>Item 19</td>
+			<td>$19</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>20</td>
+			<td>Item 20</td>
+			<td>$20</td>
+		</tr>
+	</tbody>
+</table>
+<script>
+  function getIdSelections() {
+  return $.map($('#sort-table').bootstrapTable('getSelections'), function (row) {
+    alert(row.id);
+    return row.id
+  })    
+}
+</script>  
