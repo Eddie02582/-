@@ -15,10 +15,10 @@
 ```
 
 ## Example
-在table 增加屬性
-
 <img src="img\img_1.png" alt="Smiley face">
 
+
+在table 增加屬性
 ```html
 <!-- data-show-toggle 在toolbar增加cardview切換鈕
 
@@ -39,25 +39,18 @@ data-show-pagination-switch="true" 在toolbar增加分頁切換鈕 -->
 		height = "450"
         data-pagination="true"       
         data-show-fullscreen="true"
-        data-show-toggle="true" 
-        
+        data-show-toggle="true"         
         data-show-columns="true"
-		data-show-columns-toggle-all="true"        
-        
+		data-show-columns-toggle-all="true"   
         data-show-fullscreen="true"
         data-show-refresh="true"   
-
 		data-checkbox-header="false"
-		data-click-to-select="true"
-        
+		data-click-to-select="true"        
         data-pagination="true" 
-        data-show-pagination-switch="true"        
-
+        data-show-pagination-switch="true"  
 		data-checkbox-header="false"
-		data-click-to-select="true" 
-        
+		data-click-to-select="true"         
         data-search="true"
-
        >
     <thead>
       <tr>
