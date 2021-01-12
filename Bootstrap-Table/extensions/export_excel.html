@@ -13,12 +13,13 @@
 
 <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
-<style>
+<!-- <style>
 #toolbar {
   margin: 0;
 }
-</style>
+</style> -->
 
+<!-- https://bootstrap-table.com/docs/extensions/export/ -->
 
 <div id="toolbar" class="select">
   <select class="form-control">
@@ -27,6 +28,7 @@
     <option value="selected">Export Selected</option>
   </select>
 </div>
+
 
 
 <table id="table" 
@@ -38,16 +40,10 @@
         data-toolbar="#toolbar"
         data-show-toggle="true"
         data-show-columns="true"
-        data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"		
+        data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"	    
+        data-export-options ='{"fileName": "HW Information"}'
+ 
       >
-    <thead>
-      <tr>
-        <th data-field="id" data-sortable="true">ID</th>
-        <th data-field="name" data-sortable="true">Item Name</th>
-        <th data-field="price" data-sortable="true">Item Price</th>
-      </tr>
-    </thead>
-
   </table>
   
 <script>
@@ -57,20 +53,38 @@
     $('#toolbar').find('select').change(function () {
       $table.bootstrapTable('destroy').bootstrapTable({
         exportDataType: $(this).val(),
-        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
-        columns: [        
+        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],    
+        //can be a string or a function, for example
+        //can use attribute data-export-options or exportOptions
+        /*exportOptions: {
+            fileName: function () {
+               return 'exportName'
+            }
+        },*/
+        
+        columns: [
+          {
+            field: 'state',
+            checkbox: true,
+            visible: $(this).val() === 'selected',            
+          },
           {
             field: 'id',
-            title: 'ID'
+            title: 'ID',
+            visible:false,
+            forceExport:true, //將visible = false,export 顯示
           }, {
             field: 'name',
             title: 'Item Name'
           }, {
             field: 'price',
-            title: 'Item Price'
+            title: 'Item Price',
+            forceHide:true, //設定Item Price export不輸出
           }
         ]
       })
     }).trigger('change')
   })
+  
+
 </script>
