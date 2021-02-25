@@ -1,4 +1,11 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+# Bootstrap-Table
+
+## 如何使用
+使用時需要bootstrap,bootstrap-table,jquery,fontawesome-all.css
+
+
+```html
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
 
@@ -6,7 +13,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+```
 
+### 使用html
+
+<img src="img\img_1.png" alt="Smiley face">
+
+
+在table 增加屬性
+```html
+<table
+  id="table"
+  data-toggle="table"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+```
+
+使用js
+```html
 <table id="sort-table">      
 </table>
   
@@ -68,3 +99,27 @@ $(document).ready(function () {
 });
 
 </script>
+```
+
+## 問題記錄
+
+### 設定formatter 導致filterControl 出不來
+
+設定searchFormatter :false 
+```
+      columns: [   
+          {
+              field: 'project',
+              title: 'Project',
+              sortable: true,
+              filterControl:"select",               
+              align:"center",
+              formatter: 'ProjectFormatter',
+              searchFormatter :false,                
+          },
+``
+
+
+
+
+
