@@ -1,4 +1,4 @@
-# 如何避免使用者在特定網頁表單在未經送出時意外離開
+# Avoid the user accidentally left out when not in a specific web form
 
 透過onbeforeunload Event 當window, body, frameset 物件「被卸載之前」會先引發這個事件
 
