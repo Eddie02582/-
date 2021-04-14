@@ -1,11 +1,12 @@
-# Django-tutorial
-Django-tutorial
+# Jquery Package
 
-這是用來紀錄django 
+記錄一些好用的Package
+
 
 
 Table 相關應用
 <ul>
+    <li><a href="https://github.com/Eddie02582/Web/tree/main/Jquery%20Package/Bootstrap-Table" >Excel Table</a></li>
     <li><a href="https://github.com/Eddie02582/Django-tutorial/tree/master/JavaScript/Excel%20Table" >Excel Table</a></li>
     <li><a href="https://github.com/Eddie02582/Django-tutorial/tree/master/JavaScript/Freeze%20Table" >Freeze Table</a></li>
     <li><a href="https://github.com/Eddie02582/Django-tutorial/tree/master/JavaScript/Tree%20Grid" >Tree Grid Table</a></li>
@@ -15,6 +16,6 @@ Table 相關應用
 Others
 
 <ul>
-    <li><<a href="https://github.com/Eddie02582/Django-tutorial/tree/master/JavaScript/NavBar%20Muility%20Layer" >NavBar Muility Layer</a></li>
+    <li><a href="https://github.com/Eddie02582/Django-tutorial/tree/master/JavaScript/NavBar%20Muility%20Layer" >NavBar Muility Layer</a></li>
  
 </ul>
