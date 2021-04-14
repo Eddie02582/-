@@ -4,7 +4,7 @@
 
 
 下面這方法只有ie有效
-```
+```javascript
 window.document.body.onbeforeunload = function()
 {
     return '您尚未將編輯過的表單資料送出，請問您確定要離開網頁嗎？';
@@ -16,7 +16,7 @@ window.document.body.onbeforeunload = function()
 
 以下ie/firefox/chroma 接可以
 
-```
+```javascript
 window.onbeforeunload = function (e) {
     var e = e || window.event;
 
