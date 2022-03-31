@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jstree basic demos</title>
+	<style>
+	html { margin:0; padding:0; font-size:62.5%; }
+	body { max-width:800px; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+	h1 { font-size:1.8em; }
+	.demo { overflow:auto; border:1px solid silver; min-height:100px; }
+	</style>
+	<link rel="stylesheet" href="dist/themes/default/style.min.css" />
+</head>
+<body>
+
+    <h1>search demo</h1>
+    <input type="text" id="serch_text" value="" class="input" style="border-radius:4px; border:1px solid silver;">
+    <button id = "btn_clear_search">clear search</button>
+    <div id="search" class="demo"></div>
+
+    <h1>search only match demo</h1>
+    <input type="text" id="serch_text2" value="" class="input" style="border-radius:4px; border:1px solid silver;">
+    <div id="search2" class="demo"></div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="dist/jstree.min.js"></script>
+	
+	<script>
+	// html demo
+    
+    
+    var  data =  [
+                {
+                    "id": "Root node",
+                    "text": "Root node",
+                    "icon": true,                  
+                    "state": {                       
+                        "opened": true,                                    
+                    },
+                    "data": {},
+                    "parent": "#"
+                },
+                {
+                    "id": "Root node/Child node 2",
+                    "text": "Child node 2",
+                    "icon" : "jstree-file",   
+                    "data": {},
+                    "parent": "Root node"
+                },
+                {
+                    "id": "Root node/Child node 1",
+                    "text": "Child node 1",
+                    "icon": true,
+                    "data": {},
+                    "state": {                       
+                        "opened": true,  
+                        "checked":true
+                    },
+                    "parent": "Root node"
+                },
+                {
+                    "id": "Root node/Child node 1/Child node 1-1",
+                    "text": "Child node 1-1",
+                    "icon" : "jstree-file",   
+                    "data": {},
+                    "parent": "Root node/Child node 1"
+                } 
+     ]
+	
+    
+    $('#search').jstree({
+            'core' : {
+                'data' : data         
+            },       
+            "plugins" : [ "search",],   
+    });   
+    
+    $('#search2').jstree({
+            'core' : {
+                'data' : data         
+            },       
+            "plugins" : [ "search",],           
+            "search" : {
+                "show_only_matches": true, //default:false  
+                "fuzzy": false, //¼Ò½k¤Ç°t(should chnd3 match child node 3) default:false  
+            }            
+    });   
+   
+    $('#serch_text').keyup(function (e) { 
+        var v = $('#serch_text').val();
+        $('#search').jstree(true).search(v);
+    });
+    $('#serch_text2').keyup(function (e) { 
+        var v = $('#serch_text2').val();
+        $('#search2').jstree(true).search(v);
+    });
+    
+    $('#btn_clear_search').click(function (e) { 
+        var checked_ids = $('#serch_text').val("");
+        $('#search').jstree().clear_search()
+    });
+
+
+
+
+    
+    
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jstree basic demos</title>
+	<style>
+	html { margin:0; padding:0; font-size:62.5%; }
+	body { max-width:800px; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+	h1 { font-size:1.8em; }
+	.demo { overflow:auto; border:1px solid silver; min-height:100px; }
+	</style>
+	<link rel="stylesheet" href="dist/themes/default/style.min.css" />
+</head>
+<body>
+	<h1>core demo</h1>
+    
+    <ul> 
+        <li>themes
+            <ul>    
+                <li>dots:default true,是否需要用點連接</li>
+                <li>variant:large,設定large 字體間距會變大</li>
+                <li>ellipsis: 文字多時是否省略,只有在固定容器下才有用</li>
+                <li>stripes: default false,</li>
+            </ul>
+        </li>
+        <li>restore_focus:default true,這樣refresh後一樣會鎖定原本選取的</li>
+        
+       
+    </ul>
+    <input type="button" value="create node" onclick="create();">
+    <input type="button" value="rename node" onclick="rename();">
+    <input type="button" value="del node" onclick="del();">
+    <input type="button" value="上移" onclick="moveup();">
+    <input type="button" value="下移" onclick="movedown();">
+	<div id="core" class="demo"></div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="dist/jstree.min.js"></script>
+	
+	<script>
+	// html demo
+    
+    
+    var  data =  [
+                {
+                    "id": "Root node",
+                    "text": "Root node",
+                    "icon": true,                  
+                    "state": {                       
+                        "opened": true,                                    
+                    },
+                    "data": {},
+                    "parent": "#"
+                },
+                {
+                    "id": "Root node/Child node 2",
+                    "text": "Child node 2",
+                    "icon" : "jstree-file",   
+                    "data": {},
+                    "parent": "Root node"
+                },
+                {
+                    "id": "Root node/Child node 1",
+                    "text": "Child node 1",
+                    "icon": true,
+                    "data": {},
+                    "state": {                       
+                        "opened": true,  
+                        "checked":true
+                    },
+                    "parent": "Root node"
+                },
+                {
+                    "id": "Root node/Child node 1/Child node 1-1",
+                    "text": "Child node 1-1",
+                    "icon" : "jstree-file",   
+                    "data": {},
+                    "parent": "Root node/Child node 1"
+                } 
+     ]
+	
+	$('#core').jstree({
+		'core' : {
+            //是否允許多選
+            "multiple":false,
+			'data' : data,   
+            "check_callback" : true,
+            "themes":{                
+                "dots":true,
+                "stripes":true,
+                /*"variant":"large",*/
+                "responsive":true,
+            },
+            
+            
+		}       
+    });
+
+	function create(){
+		var ref = $('#core').jstree(true);
+		var currNode = _getCurrNode();
+        //create_node ([par, node, pos, callback, is_loaded])
+        //pos:the index at which to insert the node, "first" and "last" are also supported, default is "last"
+		currNode = ref.create_node(currNode, {"type":"file"});
+		if(currNode) {
+			ref.edit(currNode);
+		}
+	}
+		
+	function rename(){
+		var ref = $('#core').jstree(true);
+		var currNode = _getCurrNode();  
+        ref.edit(currNode);    
+		/*ref.rename_node(currNode,"rename node222");*/
+	}
+	
+	function del(){
+		var ref = $('#core').jstree(true);
+		var currNode = _getCurrNode();
+		ref.delete_node(currNode);
+	}
+	
+	function moveup(){
+		var ref = $('#core').jstree(true);
+		var currNode = _getCurrNode();
+		var prevNode = ref.get_prev_dom(currNode,true);
+		ref.move_node(currNode,prevNode,'before');
+	}
+	
+	function movedown(){
+		var ref = $('#core').jstree(true);
+		var currNode = _getCurrNode();
+		var nextNode = ref.get_next_dom(currNode,true);//返回兄弟節點的下一個節點
+		ref.move_node(currNode,nextNode,'after');
+	}
+
+
+	function _getCurrNode(){
+		var ref = $('#core').jstree(true),
+		sel = ref.get_selected();
+		console.log(sel);
+		if(!sel.length) { 
+			console.log("----");
+			return false; 
+		}
+		sel = sel[0];
+		return sel;
+	}
+    
+    
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

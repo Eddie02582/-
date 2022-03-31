@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jstree basic demos</title>
+	<style>
+	html { margin:0; padding:0; font-size:62.5%; }
+	body { max-width:800px; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+	h1 { font-size:1.8em; }
+	.demo { overflow:auto; border:1px solid silver; min-height:100px; }
+	</style>
+	<link rel="stylesheet" href="dist/themes/default/style.min.css" />
+</head>
+<body>
+
+	<h1>checkbox demo</h1>
+	<div id="checkbox" class="demo"></div>
+
+	<h1>checkbox default select demo</h1>
+    <ul>
+        <li>"state": {"checked": true}</li>
+        <li>"tie_selection": false</li>
+    </ul>
+    <button onclick = "$('#demo_tree').jstree().check_all()">check all</button>
+    <button onclick = "$('#demo_tree').jstree().uncheck_all ()">uncheck all</button>
+    <button id = "btn_get_check">show checked id</button>
+    <button id = "btn_get_top_checked">取得第一層checked id</button> 
+    <button id = "btn_get_bottom_checked">取得最後一層checked id</button>  
+
+    
+	<div id="demo_tree" class="demo"></div>
+$('#demo_tree').jget_checked()
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="dist/jstree.min.js"></script>
+	
+	<script>
+
+	$('#checkbox').jstree({
+        "core" : {
+            'data': [
+               { "id" : "ajson1", "parent" : "#", "text" : "Root node1", "state": {"checked": true}},
+               { "id" : "ajson2", "parent" : "#", "text" : "Root node 2","state": {"opened": true}},
+               { "id" : "ajson3", "parent" : "ajson2", "text" : "Child 1" },
+               { "id" : "ajson4", "parent" : "ajson2", "text" : "Child 2" },
+            ]
+        },
+        "checkbox" : {
+              "keep_selected_style" : true
+        }, 
+        "plugins" : [ "checkbox"]
+	});
+    
+    $('#demo_tree').jstree({
+        "core" : {
+            'data': [
+               { "id" : "ajson1", "parent" : "#", "text" : "Root node1", "state": {"checked": true}},
+               { "id" : "ajson2", "parent" : "#", "text" : "Root node 2","state": {"opened": true}},
+               { "id" : "ajson3", "parent" : "ajson2", "text" : "Child 1","state": {"opened": true} },
+               { "id" : "ajson4", "parent" : "ajson2", "text" : "Child 2" },
+               { "id" : "ajson5", "parent" : "ajson3", "text" : "Child 1-1" },
+            ]
+        },
+        "plugins" : ['checkbox'],
+        "checkbox" : {
+            "tie_selection": false,         
+        }
+    });
+
+    
+    $('#btn_get_check').click(function (e) { 
+        var checked_ids = $('#demo_tree').jstree().get_checked();
+        alert(checked_ids.join(','))
+    });
+    
+    $('#btn_get_bottom_checked').click(function (e) { 
+        var checked_ids = $('#demo_tree').jstree().get_bottom_checked();
+        alert(checked_ids.join(','))
+    });
+    $('#btn_get_top_checked').click(function (e) { 
+        var checked_ids = $('#demo_tree').jstree().get_top_checked();
+        alert(checked_ids.join(','))
+    }); 
+ 
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
